@@ -23,7 +23,7 @@ Meta.defaultProps = {
   title: "My Movie Collection",
   keywords: "movies, my movie collection, movie search, movie rate",
   description:
-    "The place you can find all of your favorite movies. There you can rate and add notes or comments to them.",
+    "The place where you can find all of your favorite movies. Here you can rate and add notes to them.",
 };
 
 export default Meta;
