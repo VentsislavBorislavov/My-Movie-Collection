@@ -12,35 +12,10 @@
   background-color: $secondary;
   color: $primary;
   border-bottom: 1px solid $primary;
+  z-index: 10;
   a {
     &:hover {
       filter: brightness(5);
-    }
-  }
-
-  input {
-    background-color: transparent;
-    border: 1px solid $primary;
-    padding: 5px 0 5px 20px;
-    font-size: 18px;
-    width: 280px;
-    border-radius: 10px;
-    outline: none;
-    margin-right: 10px;
-  }
-
-  button {
-    font-size: 18px;
-    background-color: transparent;
-    border: 1px solid $primary;
-    border-radius: 10px;
-    padding: 5px 20px;
-    cursor: pointer;
-    transition: all 100ms ease-in;
-    &:hover {
-      border-color: $light-green;
-      color: $light-green;
-      box-shadow: 0 0 10px 2px rgba($color: $light-green, $alpha: 0.05);
     }
   }
 }

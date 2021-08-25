@@ -2,13 +2,13 @@ import navStyles from "../styles/Nav.module.scss";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
 
-const Nav = () => {
+const Header = () => {
   return (
-    <nav className={navStyles.nav}>
+    <header className={navStyles.nav}>
       <Link href="/">My Movie Collection</Link>
       <SearchBar placeholder="Search movie by title..." inputWidth="280px" />
-    </nav>
+    </header>
   );
 };
 
-export default Nav;
+export default Header;
