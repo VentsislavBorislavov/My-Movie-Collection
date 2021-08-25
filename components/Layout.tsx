@@ -1,5 +1,5 @@
 import Meta from "./Meta";
-import Nav from "./Nav";
+import Header from "./Header";
 import layoutModule from "../styles/Layout.module.scss";
 
 interface LayoutProps {
@@ -9,7 +9,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Nav />
+      <Header />
       <Meta />
       <main className={layoutModule.main}>{children}</main>
     </>

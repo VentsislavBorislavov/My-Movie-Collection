@@ -1,0 +1,63 @@
+@import "./colors";
+
+.search {
+  width: 90%;
+  max-width: 1300px;
+  text-align: center;
+  margin: auto;
+  h1 {
+    font-size: 2.5em;
+    margin-top: 2em;
+  }
+
+  .movieList {
+    margin-top: 100px;
+    .movie {
+      margin-top: 3em;
+      display: flex;
+      img {
+        max-width: 232px;
+        max-height: 314px;
+        cursor: pointer;
+        transition: 100ms ease;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+      .movieInfo {
+        text-align: start;
+        margin-left: 3em;
+        position: relative;
+        h2 {
+          font-size: 2.25em;
+          margin: 0px;
+          display: inline-block;
+          &:hover {
+            filter: brightness(1.4);
+          }
+        }
+        .basicInfo {
+          font-size: 0.85em;
+        }
+        .description {
+          font-size: 0.85em;
+        }
+        .siteLink {
+          font-size: 0.85em;
+          color: blue;
+        }
+
+        button {
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          padding: 6px 16px;
+          &:hover {
+            filter: brightness(2);
+          }
+        }
+      }
+    }
+  }
+}
