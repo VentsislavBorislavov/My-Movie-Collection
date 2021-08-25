@@ -30,5 +30,68 @@
     border: 1px solid $secondary;
     border-radius: 10px;
     padding: 5px 20px;
+    &:hover {
+      box-shadow: 0 0 10px 4px rgba($color: $secondary, $alpha: 0.3);
+    }
+  }
+}
+
+.homeFavorites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+
+  h2 {
+    font-size: 36px;
+  }
+
+  .favorites {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 100%;
+    margin: auto;
+    //Remove scrollbar for firefox
+    scrollbar-width: none;
+    //Remvoe scrollbar for chromium browsers
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .favoritesItem {
+      width: 232px;
+      height: 314px;
+      display: inline-block;
+      margin-left: 10px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      .movieInfo {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+        color: $secondary;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 150ms ease-in;
+        &:hover {
+          opacity: 1;
+        }
+        h3 {
+          margin-top: 0;
+        }
+
+        span {
+          display: block;
+          margin: 10px;
+        }
+      }
+    }
   }
 }
