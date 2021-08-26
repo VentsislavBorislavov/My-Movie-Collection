@@ -1,4 +1,4 @@
-import searchBarStyles from "../styles/SearchBar.module.scss";
+import searchBarStyles from "../../styles/SearchBar.module.scss";
 
 interface SearchBarPropType {
   placeholder: string;

@@ -1,7 +1,7 @@
-import SearchBar from "../../components/SearchBar";
+import SearchBar from "../../components/common/SearchBar";
 import searchStyles from "../../styles/Movies.module.scss";
-import MovieList from "../../components/MovieList";
-import Meta from "../../components/Meta";
+import MovieList from "../../components/moviepages/MovieList";
+import Meta from "../../components/common/Meta";
 
 const movies = () => {
   return (

@@ -1,6 +1,6 @@
 import Meta from "./Meta";
 import Header from "./Header";
-import layoutModule from "../styles/Layout.module.scss";
+import layoutModule from "../../styles/Layout.module.scss";
 
 interface LayoutProps {
   children: React.ReactNode | JSX.Element;

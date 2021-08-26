@@ -1,6 +1,6 @@
 import HomeFavoritesItem from "./HomeFavoritesItem";
-import homeStyles from "../styles/Home.module.scss";
-import testPoster from "../public/Blackwidow2.jpg";
+import homeStyles from "../../styles/Home.module.scss";
+import testPoster from "../../public/Blackwidow2.jpg";
 import { useRef, useEffect } from "react";
 
 const HomeFavorites = () => {

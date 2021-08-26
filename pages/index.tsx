@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import Hero from "../components/Hero";
-import HomeFavorites from "../components/HomeFavorites";
+import Hero from "../components/homepage/Hero";
+import HomeFavorites from "../components/homepage/HomeFavorites";
 
 const Home: NextPage = () => {
   return (

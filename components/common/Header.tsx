@@ -1,4 +1,4 @@
-import navStyles from "../styles/Nav.module.scss";
+import navStyles from "../../styles/Nav.module.scss";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
 

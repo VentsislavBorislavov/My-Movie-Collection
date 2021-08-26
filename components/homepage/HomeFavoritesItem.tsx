@@ -1,4 +1,4 @@
-import homeStyles from "../styles/Home.module.scss";
+import homeStyles from "../../styles/Home.module.scss";
 import StarRatingComponent from "react-star-rating-component";
 interface HomeFavoritesItemProps {
   title: string;

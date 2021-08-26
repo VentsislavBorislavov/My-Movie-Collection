@@ -1,7 +1,7 @@
 import Link from "next/link";
-import movieStyles from "../styles/Movies.module.scss";
-import Button from "./Button";
-import colors from "../colors";
+import movieStyles from "../../styles/Movies.module.scss";
+import Button from "../common/Button";
+import colors from "../../colors";
 
 interface PropTypes {
   title: string;

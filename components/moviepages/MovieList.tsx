@@ -1,6 +1,6 @@
 import MovieListItem from "./MovieListItem";
-import testPoster from "../public/BlackWidow2.jpg";
-import movieStyles from "../styles/Movies.module.scss";
+import testPoster from "../../public/BlackWidow2.jpg";
+import movieStyles from "../../styles/Movies.module.scss";
 
 const MovieList = () => {
   const testArr = Array(4).fill(null);

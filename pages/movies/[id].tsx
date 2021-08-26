@@ -1,5 +1,5 @@
 import movieStyles from "../../styles/Movie.module.scss";
-import Button from "../../components/Button";
+import Button from "../../components/common/Button";
 import StarRatingComponent from "react-star-rating-component";
 import testImage from "../../public/BlackWidow2.jpg";
 import colors from "../../colors";
