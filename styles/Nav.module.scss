@@ -8,14 +8,14 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: 16px 40px;
-  background-color: $secondary;
+  padding: 6px 40px;
+  background-color: #fdfefe;
+  border-bottom: 1px dotted $primary;
   color: $primary;
-  border-bottom: 1px solid $primary;
   z-index: 10;
   a {
     &:hover {
-      filter: brightness(5);
+      filter: brightness(1.5);
     }
   }
 }
