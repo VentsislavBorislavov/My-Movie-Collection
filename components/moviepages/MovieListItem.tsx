@@ -1,9 +1,11 @@
 import Link from "next/link";
-import movieStyles from "../../styles/Movies.module.scss";
+import movieStyles from "../../styles/MovieSearch.module.scss";
 import Button from "../common/Button";
 import colors from "../../colors";
 import { Movie } from "../../interfaces";
 import imageMissing from "../../public/image-not-found.jpg";
+
+// TODO make different interfaces so the red unterlines go away 😡
 
 interface PropTypes {
   movie: Movie;
@@ -32,7 +34,7 @@ const MovieListItem = ({ movie, isFavorite }: PropTypes) => {
             {movie.genres.join(", ")} | {movie.duration} minutes
           </p>
           <p className={movieStyles.description}>
-            {removeUnecessaryTags(movie.description)}
+            {removeUnecessaryTags(movie?.description)}
           </p>
           <a className={movieStyles.siteLink} href={movie.link}>
             Vist Official Website
@@ -44,7 +46,7 @@ const MovieListItem = ({ movie, isFavorite }: PropTypes) => {
   );
 };
 
-const removeUnecessaryTags = (desc: string) => {
+export const removeUnecessaryTags = (desc: string) => {
   console.log(desc);
   const reg = /<\/?[\w\d]>/gi;
   return desc?.replace(reg, "");

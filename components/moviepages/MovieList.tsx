@@ -1,5 +1,5 @@
 import MovieListItem from "./MovieListItem";
-import movieStyles from "../../styles/Movies.module.scss";
+import movieStyles from "../../styles/MovieSearch.module.scss";
 import { useSelector, RootStateOrAny } from "react-redux";
 import { Movie } from "../../interfaces";
 import { useEffect } from "react";
