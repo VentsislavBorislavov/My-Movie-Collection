@@ -1,17 +1,34 @@
 @import "./colors";
 
 .searchBar {
-  input {
-    background-color: transparent;
+  .inputField {
     border: 1px solid $primary;
-    padding: 5px 5px 5px 20px;
-    font-size: 14px;
-    border-radius: 4px;
-    outline: none;
+    padding: 2px 5px 3px 10px;
     margin-right: 10px;
+    position: relative;
+    display: inline-block;
+
+    input {
+      background-color: transparent;
+      font-size: 14px;
+      border-radius: 4px;
+      outline: none;
+      padding: 0;
+      border: none;
+      margin-right: 18px;
+    }
+    .clearInput {
+      position: absolute;
+      top: 50%;
+      right: 4px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      transform: translateY(-50%);
+    }
   }
 
-  button {
+  .searchButton {
     font-size: 14px;
     background-color: transparent;
     border: 1px solid $primary;

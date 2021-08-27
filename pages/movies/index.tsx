@@ -10,7 +10,7 @@ import MovieList from "../../components/moviepages/MovieList";
 const movies = () => {
   const searchQuery = useSelector((state: RootStateOrAny) => state.search);
   const dispatch = useDispatch();
-  const setSearch = (e: React.FormEvent<HTMLInputElement>) => {
+  const setSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setMovieSearchQuery(e.target.value));
   };
   const onSearch = async () => {
@@ -36,6 +36,9 @@ const movies = () => {
         onSearch={onSearch}
         placeholder="Search movie by title..."
         inputWidth="400px"
+        onClear={() => {
+          dispatch(setMovieSearchQuery(""));
+        }}
       />
       <MovieList />
     </section>

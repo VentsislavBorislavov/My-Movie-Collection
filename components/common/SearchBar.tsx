@@ -1,14 +1,14 @@
 import searchBarStyles from "../../styles/SearchBar.module.scss";
-import { KeyboardEventHandler, useEffect, useRef, useState } from "react";
+import clearImg from "../../public/clear.png";
 
 interface SearchBarPropType {
   placeholder: string;
   inputWidth: string;
   value: string;
-  onChange: any;
-  onSearch: any;
+  onChange(e: React.ChangeEvent<HTMLInputElement>): void;
+  onSearch(): void;
+  onClear(): void;
 }
-// TODO search bar has to have cross button that clears the input field
 
 const SearchBar = ({
   placeholder,
@@ -16,6 +16,7 @@ const SearchBar = ({
   onChange,
   value,
   onSearch,
+  onClear,
 }: SearchBarPropType) => {
   const onPressEnter = (e: any) => {
     if (e.code === "Enter") {
@@ -25,17 +26,24 @@ const SearchBar = ({
 
   return (
     <div className={searchBarStyles.searchBar}>
-      <input
-        value={value}
-        onChange={onChange}
-        onKeyDown={onPressEnter}
-        type="text"
-        name="nav-search-bar"
-        id="nav-search-bar"
-        placeholder={placeholder}
-        style={{ width: inputWidth }}
-      />
-      <button onClick={onSearch}>Search</button>
+      <div className={searchBarStyles.inputField}>
+        <input
+          value={value}
+          onChange={onChange}
+          onKeyDown={onPressEnter}
+          type="text"
+          name="nav-search-bar"
+          id="nav-search-bar"
+          placeholder={placeholder}
+          style={{ width: inputWidth }}
+        />
+        <button className={searchBarStyles.clearInput} onClick={onClear}>
+          <img src={clearImg.src} alt="clear search" />
+        </button>
+      </div>
+      <button className={searchBarStyles.searchButton} onClick={onSearch}>
+        Search
+      </button>
     </div>
   );
 };

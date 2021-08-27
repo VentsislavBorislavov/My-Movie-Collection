@@ -47,7 +47,6 @@ const MovieListItem = ({ movie, isFavorite }: PropTypes) => {
 };
 
 export const removeUnecessaryTags = (desc: string) => {
-  console.log(desc);
   const reg = /<\/?[\w\d]>/gi;
   return desc?.replace(reg, "");
 };

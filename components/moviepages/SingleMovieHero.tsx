@@ -8,6 +8,7 @@ import movie from "../../pages/movies/[id]";
 
 // TODO rename every object from year to date
 // TODO extract the year of every date obj with function getYear
+// TODO create function that checks if images is not null
 
 const SingleMovieHero = ({
   title,
