@@ -1,5 +1,5 @@
 import React from "react";
-import searchStyles from "../../styles/Movies.module.scss";
+import searchStyles from "../../styles/MovieSearch.module.scss";
 import { setMovieSearchQuery } from "../../redux/slices/searchSlice";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
 import { setMovies } from "../../redux/slices/moviesSlice";
