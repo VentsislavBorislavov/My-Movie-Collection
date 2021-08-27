@@ -2,49 +2,39 @@ import Link from "next/link";
 import movieStyles from "../../styles/Movies.module.scss";
 import Button from "../common/Button";
 import colors from "../../colors";
+import { Movie } from "../../interfaces";
+import imageMissing from "../../public/image-not-found.jpg";
 
 interface PropTypes {
-  title: string;
-  year: string | number;
-  genres: string[];
-  lenghtInMin: number | string;
-  description: string;
-  link: string;
+  movie: Movie;
   isFavorite: boolean;
-  movieId: any;
-  poster: string;
 }
 
-const MovieListItem = ({
-  title,
-  year,
-  genres,
-  lenghtInMin,
-  description,
-  link,
-  isFavorite,
-  movieId,
-  poster,
-}: PropTypes) => {
+const MovieListItem = ({ movie, isFavorite }: PropTypes) => {
   return (
     <div className={movieStyles.movie}>
-      <Link href={`/movies/${movieId}`}>
-        <img src={poster} alt="" />
+      <Link href={`/movies/${movie.id}`}>
+        <img
+          src={movie.images ? movie.images.medium : imageMissing.src}
+          alt=""
+        />
       </Link>
       <div className={movieStyles.movieInfo}>
         <div>
-          <Link href={`/movies/${movieId}`}>
+          <Link href={`/movies/${movie.id}`}>
             <a>
               <h2>
-                {title} ({year})
+                {movie.title} ({movie.year})
               </h2>
             </a>
           </Link>
           <p className={movieStyles.basicInfo}>
-            {genres.join(",")} | {lenghtInMin} minutes
+            {movie.genres.join(", ")} | {movie.duration} minutes
           </p>
-          <p className={movieStyles.description}>{description}</p>
-          <a className={movieStyles.siteLink} href={link}>
+          <p className={movieStyles.description}>
+            {removeUnecessaryTags(movie.description)}
+          </p>
+          <a className={movieStyles.siteLink} href={movie.link}>
             Vist Official Website
           </a>
         </div>
@@ -52,6 +42,12 @@ const MovieListItem = ({
       </div>
     </div>
   );
+};
+
+const removeUnecessaryTags = (desc: string) => {
+  console.log(desc);
+  const reg = /<\/?[\w\d]>/gi;
+  return desc?.replace(reg, "");
 };
 
 export default MovieListItem;
