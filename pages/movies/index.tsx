@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import searchStyles from "../../styles/MovieSearch.module.scss";
-import { setMovieSearchQuery } from "../../redux/slices/searchSlice";
+import { setSearchText } from "../../redux/slices/searchSlice";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
 import { setMovies } from "../../redux/slices/moviesSlice";
 import Meta from "../../components/common/Meta";
@@ -8,16 +8,18 @@ import SearchBar from "../../components/common/SearchBar";
 import MovieList from "../../components/moviepages/MovieList";
 
 const movies = () => {
-  const searchQuery = useSelector((state: RootStateOrAny) => state.search);
+  const { current, previous } = useSelector(
+    (state: RootStateOrAny) => state.search
+  );
   const dispatch = useDispatch();
   const setSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setMovieSearchQuery(e.target.value));
+    dispatch(setSearchText(e.target.value));
   };
   const onSearch = async () => {
-    if (!searchQuery) return;
+    if (!current || current === previous) return;
     try {
       const res = await fetch(
-        `https://api.tvmaze.com/search/shows?q=${searchQuery}`
+        `https://api.tvmaze.com/search/shows?q=${current}`
       );
       const data = await res.json();
       dispatch(setMovies(data));
@@ -26,18 +28,23 @@ const movies = () => {
     }
   };
 
+  // If search is made by the header the if statement in onSearch will say if the search action is necessary to be made
+  useEffect(() => {
+    onSearch();
+  }, []);
+
   return (
     <section className={searchStyles.search}>
       <Meta title="Search | My Movie Collection" />
       <h1>Search</h1>
       <SearchBar
-        value={searchQuery}
+        value={current}
         onChange={setSearch}
         onSearch={onSearch}
         placeholder="Search movie by title..."
         inputWidth="400px"
         onClear={() => {
-          dispatch(setMovieSearchQuery(""));
+          dispatch(setSearchText(""));
         }}
       />
       <MovieList />

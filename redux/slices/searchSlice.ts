@@ -1,17 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const movieSearchQuery = "";
+const search = {
+    current: "",
+    previous: ""
+}
 
 export const searchSlice = createSlice({
     name: "search",
-    initialState: movieSearchQuery,
+    initialState: search,
     reducers:{
-        setMovieSearchQuery: (state, action) =>{
-            return action.payload;
+        setSearchText: (state, action) =>{
+            state.previous = state.current,
+            state.current = action.payload
         }
     }
 })
 
-export const { setMovieSearchQuery } = searchSlice.actions;
+export const { setSearchText } = searchSlice.actions;
 
 export default searchSlice.reducer

@@ -1,10 +1,8 @@
 import colors from "../../colors";
 import movieStyles from "../../styles/Movie.module.scss";
 import Button from "../common/Button";
-import testImage from "../../public/BlackWidow2.jpg";
 import { useState } from "react";
-import { ExtendedMovie, Movie } from "../../interfaces";
-import movie from "../../pages/movies/[id]";
+import { ExtendedMovie } from "../../interfaces";
 
 // TODO rename every object from year to date
 // TODO extract the year of every date obj with function getYear
