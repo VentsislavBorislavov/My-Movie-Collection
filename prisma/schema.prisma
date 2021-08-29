@@ -15,5 +15,5 @@ model Movie {
   note       String  @default("")
   rating     Int     @default(0)
   isFavorite Boolean @default(false)
-  image      String
+  image      String  @default("")
 }
