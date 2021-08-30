@@ -1,6 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../_base";
 import { NextApiResponse, NextApiRequest } from "next";
-const prisma = new PrismaClient()
 
 export default async ({ query: { id: filmId } }: NextApiRequest, res: NextApiResponse) => {
     if (!isValidId(filmId)) {
