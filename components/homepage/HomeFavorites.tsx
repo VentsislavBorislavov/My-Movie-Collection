@@ -1,13 +1,15 @@
 import HomeFavoritesItem from "./HomeFavoritesItem";
 import homeStyles from "../../styles/Home.module.scss";
-import testPoster from "../../public/Blackwidow2.jpg";
 import { useRef, useEffect } from "react";
+import { DBMovie } from "../../interfaces";
 
-const HomeFavorites = () => {
-  const filmArray = Array(10).fill(null);
+interface HomeFavoritesType {
+  movies: DBMovie[];
+}
+
+const HomeFavorites = ({ movies }: HomeFavoritesType) => {
   const favMoviesRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    console.log(favMoviesRef.current);
     favMoviesRef.current?.addEventListener("wheel", (e: WheelEvent) => {
       e.preventDefault();
       favMoviesRef.current!.scrollLeft += e.deltaY;
@@ -18,19 +20,22 @@ const HomeFavorites = () => {
   }, []);
   return (
     <section className={homeStyles.homeFavorites}>
-      <h2>
-        <a href="/favorites">Your favorites</a>
-      </h2>
+      <h2>Your favorites</h2>
       <div ref={favMoviesRef} className={homeStyles.favorites}>
-        {filmArray.map((film, idx) => (
-          <HomeFavoritesItem
-            key={idx}
-            title="Black Widow"
-            year={2021}
-            rating={3}
-            img={testPoster}
-          />
-        ))}
+        {movies ? (
+          movies.map((movie: DBMovie) => (
+            <HomeFavoritesItem
+              key={movie.id}
+              title={movie.title}
+              year={movie.year}
+              rating={movie.rating}
+              image={movie.image}
+              id={movie.id}
+            />
+          ))
+        ) : (
+          <div style={{ textAlign: "center" }}>You have no favorite movies</div>
+        )}
       </div>
     </section>
   );
