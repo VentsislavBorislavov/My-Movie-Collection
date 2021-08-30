@@ -3,8 +3,8 @@ import { NextApiResponse, NextApiRequest } from "next";
 const prisma = new PrismaClient()
 
 export default async ({ query: { id: filmId } }: NextApiRequest, res: NextApiResponse) => {
-    if (isValidId(filmId)) {
-        res.status(400).json({ message: "The film id must be of type number!" })
+    if (!isValidId(filmId)) {
+        res.status(400).json({ message: "Invalid film id" })
         return
     }
 
@@ -13,5 +13,5 @@ export default async ({ query: { id: filmId } }: NextApiRequest, res: NextApiRes
 }
 
 export const isValidId = (id: any) => {
-    return isNaN(id) && id % 1 === 0;
+    return isNaN(id) || id % 1 === 0;
 }

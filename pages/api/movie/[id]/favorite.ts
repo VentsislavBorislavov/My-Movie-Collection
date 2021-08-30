@@ -1,30 +1,29 @@
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
+import { isValidId } from ".";
+
 const prisma = new PrismaClient()
 
-interface FavoriteMovie {
-    isFavorite: boolean,
-    image: string
-}
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const filmId = req.query.id;
-    if (isNaN(filmId)) {
+    
+    if (!isValidId(filmId)) {
         res.status(400).json({ message: "Invalid data" })
         return
     }
 
-    let favorite;
+    let movie;
 
     if (req.method === "POST") {
-        favorite = await prisma.movie.findFirst({ where: { id: +filmId } })
+        movie = await prisma.movie.findFirst({ where: { id: +filmId } })
         try {
             const { isFavorite, image } = req.body;
-            if (favorite) {
-                favorite = await prisma.movie.update({ where: { id: +filmId }, data: { isFavorite: isFavorite, image: image } })
+            if (movie) {
+                movie = await prisma.movie.update({ where: { id: +filmId }, data: { isFavorite: isFavorite, image: image } })
             } else {
-                favorite = await prisma.movie.create({ data: { id: +filmId, isFavorite: isFavorite, image: image } })
+                movie = await prisma.movie.create({ data: { id: +filmId, isFavorite: isFavorite, image: image } })
             }
-            res.status(500).json(JSON.stringify(favorite))
+            res.status(500).json(JSON.stringify(movie))
 
             return
         } catch (error) {
@@ -34,9 +33,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // Checks if movie record exists and if it is in favorites
-    favorite = await prisma.movie.findFirst({ where: { id: +filmId, isFavorite: true } })
+    movie = await prisma.movie.findFirst({ where: { id: +filmId, isFavorite: true } })
 
-    res.json({ isFavorite: Boolean(favorite) })
+    res.json({ isFavorite: Boolean(movie) })
 
 
 }

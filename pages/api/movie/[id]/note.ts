@@ -1,9 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
+import { isValidId } from ".";
+
 const prisma = new PrismaClient()
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const filmId = req.query.id;
-    if (isNaN(filmId)) {
+    if (!isValidId(filmId)) {
         res.status(400).json({ message: "Invalid data" })
         return
     }
@@ -12,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (req.method === "POST") {
         try {
-            if (req.body !== "string") {
+            if (typeof req.body !== "string") {
                 res.status(400).json({ message: "Invalid data" })
             }
             if (note) {
