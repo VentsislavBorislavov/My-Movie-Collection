@@ -16,13 +16,17 @@ interface Data {
   isFavorite: boolean;
 }
 
+const favorite = async (id: number) => {
+  const res = await fetch(`http://localhost:3000/api/movie/${id}/favorite`);
+  return await res.json();
+};
+
 const MovieListItem = ({ movie }: PropTypes) => {
   const id = movie.id;
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const fetchFavorite = async () => {
     const data = { isFavorite: !isFavorite, image: movie.images?.medium };
-    console.log("working?");
     const res = await fetch(`http://localhost:3000/api/movie/${id}/favorite`, {
       method: "POST",
       body: JSON.stringify(data),
@@ -32,12 +36,9 @@ const MovieListItem = ({ movie }: PropTypes) => {
     return res;
   };
 
-  useEffect(async () => {
-    const res = await fetch(`http://localhost:3000/api/movie/${id}/favorite`);
-    const data: Data = await res.json();
-
-    setIsFavorite(data.isFavorite);
-  });
+  useEffect(() => {
+    favorite(id).then((isFav) => setIsFavorite(isFav.isFavorite));
+  }, []);
 
   return (
     <div className={movieStyles.movie}>
@@ -72,7 +73,7 @@ const MovieListItem = ({ movie }: PropTypes) => {
           }}
           color={isFavorite ? colors.lightRed : colors.lightGreen}
         >
-          {isFavorite? "Remove From Favorites" : "Add To Favorites"}
+          {isFavorite ? "Remove From Favorites" : "Add To Favorites"}
         </Button>
       </div>
     </div>
