@@ -24,7 +24,7 @@ const SingleMovieHero = ({
   );
 
   const handleFavoriteClick = () => {
-    fetchFavorite(id, inFavorites, images?.medium);
+    fetchFavorite(id, inFavorites, images?.medium, title, year);
     setIsInFavorites(!inFavorites);
   };
 

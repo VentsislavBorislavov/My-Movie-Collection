@@ -19,9 +19,11 @@ interface Data {
 export const fetchFavorite = async (
   id: string | number,
   isFavorite: boolean,
-  image: string
+  image: string,
+  title: string,
+  year: string
 ) => {
-  const data = { isFavorite: !isFavorite, image };
+  const data = { isFavorite: !isFavorite, image, title, year };
   const res = await fetch(`http://localhost:3000/api/movie/${id}/favorite`, {
     method: "POST",
     body: JSON.stringify(data),
@@ -30,7 +32,7 @@ export const fetchFavorite = async (
   return res;
 };
 
-const favorite = async (id: number | undefined) => {
+const favorite = async (id: number) => {
   const res = await fetch(`http://localhost:3000/api/movie/${id}/favorite`);
   return await res.json();
 };
@@ -40,7 +42,13 @@ const MovieListItem = ({ movie }: PropTypes) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const handleFavoriteClick = () => {
-    fetchFavorite(id, isFavorite, movie.images?.medium);
+    fetchFavorite(
+      id,
+      isFavorite,
+      movie.images?.medium,
+      movie.title,
+      movie.year
+    );
     setIsFavorite(!isFavorite);
   };
 

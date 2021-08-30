@@ -2,7 +2,6 @@ import MovieListItem from "./MovieListItem";
 import movieStyles from "../../styles/MovieSearch.module.scss";
 import { useSelector, RootStateOrAny } from "react-redux";
 import { Movie } from "../../interfaces";
-import { useEffect } from "react";
 
 const MovieList = () => {
   const movies: Movie[] | [] = useSelector(
@@ -13,7 +12,7 @@ const MovieList = () => {
     <div className={movieStyles.movieList}>
       {movies.length > 0 &&
         movies.map((movie: Movie) => (
-          <MovieListItem movie={movie} key={movie.id} isFavorite />
+          <MovieListItem movie={movie} key={movie.id} />
         ))}
     </div>
   );

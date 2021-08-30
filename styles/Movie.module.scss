@@ -19,9 +19,6 @@
   }
   button {
     padding: 4px 10px;
-    &:hover {
-      box-shadow: 0 0 6px 4px rgba($color: $light-green, $alpha: 0.5);
-    }
   }
 }
 .rate {
