@@ -9,9 +9,6 @@ const MovieList = () => {
     (state: RootStateOrAny) => state.movies
   );
 
-  useEffect(() => {
-    console.log(movies);
-  }, movies);
   return (
     <div className={movieStyles.movieList}>
       {movies.length > 0 &&

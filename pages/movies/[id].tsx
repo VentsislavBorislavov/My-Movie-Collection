@@ -7,8 +7,9 @@ interface MovieType {
   filteredMovie: Movie;
 }
 
+// TODO fix bug when movie does not have image the page crashes
+
 const movie = ({ filteredMovie: movie }: MovieType) => {
-  console.log(movie);
   return (
     <>
       <SingleMovieHero
@@ -21,7 +22,7 @@ const movie = ({ filteredMovie: movie }: MovieType) => {
       />
       <SingleMovieRate
         description={movie.description}
-        rating={5}
+        rating={0}
         note="random note"
       />
     </>

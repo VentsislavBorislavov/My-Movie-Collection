@@ -17,14 +17,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === "POST") {
         movie = await prisma.movie.findFirst({ where: { id: +filmId } })
         try {
-            const { isFavorite, image } = req.body;
+            const { isFavorite, image } = JSON.parse(req.body);
             if (movie) {
                 movie = await prisma.movie.update({ where: { id: +filmId }, data: { isFavorite: isFavorite, image: image } })
             } else {
                 movie = await prisma.movie.create({ data: { id: +filmId, isFavorite: isFavorite, image: image } })
             }
-            res.status(500).json(JSON.stringify(movie))
-
+            res.json(movie)
             return
         } catch (error) {
             res.status(500).json(JSON.stringify(error))

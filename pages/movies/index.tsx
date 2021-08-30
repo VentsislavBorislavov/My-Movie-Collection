@@ -28,7 +28,6 @@ const movies = () => {
     }
   };
 
-  // If search is made by the header the if statement in onSearch will say if the search action is necessary to be made
   useEffect(() => {
     onSearch();
   }, []);
