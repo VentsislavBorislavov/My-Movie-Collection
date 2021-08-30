@@ -16,7 +16,21 @@ interface Data {
   isFavorite: boolean;
 }
 
-const favorite = async (id: number) => {
+export const fetchFavorite = async (
+  id: string | number,
+  isFavorite: boolean,
+  image: string
+) => {
+  const data = { isFavorite: !isFavorite, image };
+  const res = await fetch(`http://localhost:3000/api/movie/${id}/favorite`, {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+
+  return res;
+};
+
+const favorite = async (id: number | undefined) => {
   const res = await fetch(`http://localhost:3000/api/movie/${id}/favorite`);
   return await res.json();
 };
@@ -25,15 +39,9 @@ const MovieListItem = ({ movie }: PropTypes) => {
   const id = movie.id;
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
-  const fetchFavorite = async () => {
-    const data = { isFavorite: !isFavorite, image: movie.images?.medium };
-    const res = await fetch(`http://localhost:3000/api/movie/${id}/favorite`, {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-
+  const handleFavoriteClick = () => {
+    fetchFavorite(id, isFavorite, movie.images?.medium);
     setIsFavorite(!isFavorite);
-    return res;
   };
 
   useEffect(() => {
@@ -68,9 +76,7 @@ const MovieListItem = ({ movie }: PropTypes) => {
           </a>
         </div>
         <Button
-          onClick={() => {
-            fetchFavorite();
-          }}
+          onClick={handleFavoriteClick}
           color={isFavorite ? colors.lightRed : colors.lightGreen}
         >
           {isFavorite ? "Remove From Favorites" : "Add To Favorites"}

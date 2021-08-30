@@ -1,37 +1,45 @@
 import link from "next/link";
 import SingleMovieHero from "../../components/moviepages/SingleMovieHero";
 import SingleMovieRate from "../../components/moviepages/SingleMovieRate";
-import { Movie } from "../../interfaces";
+import { DBMovie, Movie } from "../../interfaces";
 
 interface MovieType {
   filteredMovie: Movie;
+  dbMovie: DBMovie;
 }
 
 // TODO fix bug when movie does not have image the page crashes
 
-const movie = ({ filteredMovie: movie }: MovieType) => {
+const movie = ({ filteredMovie: movie, dbMovie }: MovieType) => {
   return (
     <>
       <SingleMovieHero
         title={movie.title}
         year={movie.year}
-        isFavorite
+        isFavorite={dbMovie ? dbMovie.isFavorite : false}
         genres={movie.genres}
         duration={movie.duration}
         images={movie.images}
+        id={movie.id}
       />
       <SingleMovieRate
         description={movie.description}
-        rating={0}
-        note="random note"
+        rating={dbMovie ? dbMovie.rating : 0}
+        note={dbMovie ? dbMovie.note : ""}
+        id={movie.id}
       />
     </>
   );
 };
-
+// TODO rename movieR
 export const getServerSideProps = async (context: any) => {
-  const res = await fetch(`https://api.tvmaze.com/shows/${context.params.id}`);
+  const id = context.params.id;
+  const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
   const movie = await res.json();
+
+  const dbRes = await fetch(`http://localhost:3000/api/movie/${id}`);
+  const dbMovie: DBMovie = await dbRes.json();
+
   const filteredMovie = {
     title: movie.name,
     genres: movie.genres,
@@ -40,11 +48,13 @@ export const getServerSideProps = async (context: any) => {
     link: movie.officialSite,
     images: movie.image,
     description: movie.summary,
+    id,
   };
 
   return {
     props: {
       filteredMovie,
+      dbMovie,
     },
   };
 };

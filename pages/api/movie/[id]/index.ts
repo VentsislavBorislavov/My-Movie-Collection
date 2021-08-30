@@ -8,7 +8,8 @@ export default async ({ query: { id: filmId } }: NextApiRequest, res: NextApiRes
     }
 
     const movie = await prisma.movie.findFirst({ where: { id: +filmId } })
-    res.json(movie);
+    movie?
+    res.json(movie): res.json({});
 }
 
 export const isValidId = (id: any) => {

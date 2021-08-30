@@ -14,8 +14,11 @@ export interface Image {
     original: string;
 }
 
-export interface ExtendedMovie extends Movie{
+export interface DBMovie {
   isFavorite?: boolean;
   note?: string;
   rating?: number
+  image?: string
 }
+
+export interface ExtendedMovie extends Movie, DBMovie {}
