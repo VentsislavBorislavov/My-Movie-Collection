@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <header className={navStyles.nav}>
-      <Link href="/">My Movie Collection</Link>
+      <Link href="/">My TV Shows</Link>
       <SearchBar
         onSearch={onSearch}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

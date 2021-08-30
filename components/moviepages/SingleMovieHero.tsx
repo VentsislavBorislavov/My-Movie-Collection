@@ -6,7 +6,6 @@ import { ExtendedMovie, Image } from "../../interfaces";
 import { fetchFavorite } from "./MovieListItem";
 import imageNotFound from "../../public/image-not-found.jpg";
 
-// TODO rename every object from year to date
 // TODO extract the year of every date obj with function getYear
 // TODO create function that checks if images is not null
 

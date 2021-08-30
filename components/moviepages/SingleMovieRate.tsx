@@ -4,8 +4,6 @@ import { ExtendedMovie } from "../../interfaces";
 import { removeUnecessaryTags } from "./MovieListItem";
 import React, { useEffect, useState } from "react";
 
-// TODO make clicking on stars change rating
-
 const saveNote = async (id: number | undefined, note: string | undefined) => {
   const res = await fetch(`http://localhost:3000/api/movie/${id}/note`, {
     method: "POST",
@@ -49,6 +47,7 @@ const SingleMovieRate = ({ description, rating, note, id }: ExtendedMovie) => {
         onChange={handleChange}
       ></textarea>
       <button
+        className={movieStyles.saveButton}
         onClick={() => {
           saveNote(id, noteValue);
         }}

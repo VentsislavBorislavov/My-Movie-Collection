@@ -1,5 +1,6 @@
 import searchBarStyles from "../../styles/SearchBar.module.scss";
 import clearImg from "../../public/clear.png";
+import searchImg from "../../public/search-icon.png";
 
 interface SearchBarPropType {
   placeholder: string;
@@ -42,7 +43,7 @@ const SearchBar = ({
         </button>
       </div>
       <button className={searchBarStyles.searchButton} onClick={onSearch}>
-        Search
+        <img src={searchImg.src} alt="Search" />
       </button>
     </div>
   );

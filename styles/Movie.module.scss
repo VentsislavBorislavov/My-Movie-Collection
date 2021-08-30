@@ -29,12 +29,31 @@
   width: 90%;
   max-width: 900px;
   margin: auto;
-
+  color: $secondary;
   textarea {
     width: 100%;
     max-width: 550px;
     min-height: 200px;
     resize: none;
     padding: 20px;
+    background-color: #2d2d2d;
+    color: #757575;
+    border: 2px solid #313131;
+  }
+
+  .saveButton {
+    font-size: 14px;
+    background-color: #2d2d2d;
+    border: 1px solid #313131;
+    color: $secondary;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    cursor: pointer;
+    transition: all 100ms ease-in;
+    &:hover {
+      filter: brightness(1.5);
+    }
   }
 }

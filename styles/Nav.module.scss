@@ -8,12 +8,12 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: 6px 40px;
-  background-color: #fdfefe;
-  border-bottom: 1px dotted $primary;
-  color: $primary;
+  padding: 10px 40px;
+  color: $secondary;
+  background-color: #171717;
   z-index: 10;
   a {
+    font-weight: bold;
     &:hover {
       filter: brightness(1.5);
     }

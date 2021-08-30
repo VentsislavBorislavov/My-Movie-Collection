@@ -2,20 +2,22 @@
 
 .searchBar {
   .inputField {
-    border: 1px solid $primary;
-    padding: 2px 5px 3px 10px;
-    margin-right: 10px;
+    border: 1px solid #313131;
+    padding: 6px 5px 6px 12px;
+    margin-right: 4px;
     position: relative;
     display: inline-block;
+    background-color: #2d2d2d;
 
     input {
       background-color: transparent;
-      font-size: 14px;
+      font-size: 16px;
       border-radius: 4px;
       outline: none;
       padding: 0;
       border: none;
       margin-right: 18px;
+      color: rgba($color: #757575, $alpha: 0.9);
     }
     .clearInput {
       position: absolute;
@@ -29,18 +31,15 @@
   }
 
   .searchButton {
-    font-size: 14px;
-    background-color: transparent;
-    border: 1px solid $primary;
+    background-color: #2d2d2d;
+    border: 1px solid #313131;
     color: $primary;
     border-radius: 4px;
-    padding: 5px 20px;
+    padding: 9px 10px 7px 10px;
     cursor: pointer;
     transition: all 100ms ease-in;
     &:hover {
-      border-color: $light-green;
-      color: $light-green;
-      box-shadow: 0 0 10px 2px rgba($color: $light-green, $alpha: 0.05);
+      filter: brightness(1.5);
     }
   }
 }

@@ -2,7 +2,7 @@
 
 .heroContainer {
   min-height: 360px;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("../public/hero-cover.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -27,7 +27,8 @@
   a {
     font-size: 1.3em;
 
-    border: 1px solid $secondary;
+    border: 1px solid #313131;
+    background-color: #2d2d2d;
     border-radius: 10px;
     padding: 5px 20px;
     &:hover {
@@ -43,6 +44,7 @@
   justify-content: center;
   width: 90%;
   margin: auto;
+  color: $secondary;
 
   h2 {
     font-size: 36px;

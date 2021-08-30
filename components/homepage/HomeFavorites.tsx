@@ -22,7 +22,7 @@ const HomeFavorites = ({ movies }: HomeFavoritesType) => {
     <section className={homeStyles.homeFavorites}>
       <h2>Your favorites</h2>
       <div ref={favMoviesRef} className={homeStyles.favorites}>
-        {movies ? (
+        {movies.length > 0 ? (
           movies.map((movie: DBMovie) => (
             <HomeFavoritesItem
               key={movie.id}
@@ -34,7 +34,9 @@ const HomeFavorites = ({ movies }: HomeFavoritesType) => {
             />
           ))
         ) : (
-          <div style={{ textAlign: "center" }}>You have no favorite movies</div>
+          <div style={{ textAlign: "center" }}>
+            You have no favorite TV Shows
+          </div>
         )}
       </div>
     </section>
