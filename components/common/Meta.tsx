@@ -20,10 +20,10 @@ const Meta = ({ title, keywords, description }: MetaProps) => {
 };
 
 Meta.defaultProps = {
-  title: "My Movie Collection",
-  keywords: "movies, my movie collection, movie search, movie rate",
-  description:
-    "The place where you can find all of your favorite movies. Here you can rate and add notes to them.",
+  title: "My TV Shows",
+  keywords:
+    "tv shows, my tv shows, tv show search, tv show rate, movie, movie search",
+  description: "The place where you can find all of your favorite TV Shows.",
 };
 
 export default Meta;

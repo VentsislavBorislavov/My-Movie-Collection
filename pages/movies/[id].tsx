@@ -2,17 +2,17 @@ import link from "next/link";
 import SingleMovieHero from "../../components/moviepages/SingleMovieHero";
 import SingleMovieRate from "../../components/moviepages/SingleMovieRate";
 import { DBMovie, Movie } from "../../interfaces";
+import Meta from "../../components/common/Meta";
 
 interface MovieType {
   filteredMovie: Movie;
   dbMovie: DBMovie;
 }
 
-// TODO fix bug when movie does not have image the page crashes
-
 const movie = ({ filteredMovie: movie, dbMovie }: MovieType) => {
   return (
     <>
+      <Meta title={movie.title} />
       <SingleMovieHero
         title={movie.title}
         year={movie.year}
@@ -31,7 +31,7 @@ const movie = ({ filteredMovie: movie, dbMovie }: MovieType) => {
     </>
   );
 };
-// TODO rename movieR
+
 export const getServerSideProps = async (context: any) => {
   const id = context.params.id;
   const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
